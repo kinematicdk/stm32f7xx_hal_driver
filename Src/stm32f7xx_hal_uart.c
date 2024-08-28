@@ -2472,6 +2472,21 @@ __weak void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 }
 
 /**
+  * @brief  Rx Transfer partially completed callback. Added by Kinematic.
+  * @param  huart UART handle.
+  * @retval None
+  */
+__weak void HAL_UART_RxPartialCallback(UART_HandleTypeDef *huart)
+{
+	/* Prevent unused argument(s) compilation warning */
+	UNUSED(huart);
+
+	/* NOTE : This function should not be modified, when the callback is needed,
+			the HAL_UART_RxPartialCpltCallback can be implemented in the user file.
+   */
+}
+
+/**
   * @brief  Rx Half Transfer completed callback.
   * @param  huart UART handle.
   * @retval None
@@ -3938,6 +3953,8 @@ static void UART_RxISR_8BIT(UART_HandleTypeDef *huart)
 #endif /* USE_HAL_UART_REGISTER_CALLBACKS */
       }
     }
+	HAL_UART_RxPartialCallback(huart);
+
   }
   else
   {
