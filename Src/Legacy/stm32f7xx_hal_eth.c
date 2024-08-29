@@ -317,6 +317,7 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
   (heth->Instance)->MACMIIAR = (uint32_t)tempreg;
 
   /*-------------------- PHY initialization and configuration ----------------*/
+#if 0
   /* Put the PHY in reset mode */
   if((HAL_ETH_WritePHYRegister(heth, PHY_BCR, PHY_RESET)) != HAL_OK)
   {
@@ -473,6 +474,7 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
     /* Delay to assure PHY configuration */
     HAL_Delay(PHY_CONFIG_DELAY);
   }
+#endif
 
   /* Config MAC and DMA */
   ETH_MACDMAConfig(heth, err);
